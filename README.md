@@ -32,10 +32,36 @@ After compilation, move the executable to a system-wide location:
 sudo mv ValkyrieShield /usr/local/bin/
 ```
 
+
+
 Set up the Systemd service by copying the service file:
 
 ```
 sudo cp ValkyrieShield.service /etc/systemd/system/
+```
+
+Or set the file up yourself:
+
+```
+sudo vim /stc/systemd/system/ValkyrieShield.service
+```
+
+Contents should look like this:
+
+```
+[Unit]
+Description=ValkierieShield Daemon
+After=network.targert
+
+[Service]
+ExecStart=/bin/sh -c '<Path/to/Valkyrie/Shield>' # Add the Path to ValkyrieShield here 
+User=root
+Group=root
+Restart=always
+RuntimeMaxSec=900 # (Optional) Ensure it restarts every 15 with this configuration
+
+[Install]
+WantedBy=multi-user-target
 ```
 
 Finally, enable and start the service:
