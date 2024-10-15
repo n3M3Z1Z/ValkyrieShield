@@ -61,7 +61,7 @@ Restart=always
 RuntimeMaxSec=900 # (Optional) Ensure it restarts every 15 with this configuration
 
 [Install]
-WantedBy=multi-user-target
+WantedBy=multi-user.target
 ```
 
 Finally, enable and start the service:
